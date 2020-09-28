@@ -1,0 +1,19 @@
+import smtplib 
+
+the_subject="This is a test mail"
+the_body="Python is a beautiful language"
+the_recipient="recipient@email.com"
+
+def my_mail(subject, body, to) :
+    with smtplib.SMTP('smtp.gmail.com',587) as smtp:
+        smtp.ehlo()
+        smtp.starttls()
+        smtp.ehlo()
+        smtp.login("sender@gmail.com", "the_password")
+        msg= f'Subject: {subject}\n\n{body}'
+        smtp.sendmail("sender@gmail.com", to , msg)
+        
+        
+ if __name__=="__main__":
+    my_mail(the_subject,the_body,the_recipient)
+    
